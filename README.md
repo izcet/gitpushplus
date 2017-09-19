@@ -31,6 +31,7 @@ And generates/copies the files being sourced:
  - [source](https://github.com/izcet/gitpushplus/blob/master/commit_script.sh)
 <br>
 ![commitexample](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/commit2.png)
+<br>
 ![Verbose commit example](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/commit.png)
 
 ### Git Push Plus All
