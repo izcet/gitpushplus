@@ -129,3 +129,14 @@ alias isaacvault="ssh irhett@pirated.space -p 57183"
 alias isaaclocal="ssh irhett@10.10.190.11 -p 57183"
 
 alias musings="ssh keras@107.170.212.195 -p 42000"
+####  Git Push Plus variables and setup  ####
+
+export GPP_DIR=/nfs/2016/i/irhett/.gpp_resources/
+export GPP_GREEN='[0;32m'
+export GPP_PURPLE='[0;35m'
+export GPP_RED='[0;31m'
+export GPP_NOCOLOR='[0m'
+
+source 81615{GPP_DIR}aliases.sh
+
+####          End Git Push Plus          ####

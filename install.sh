@@ -31,41 +31,41 @@ chmod +x ${GPP_DIR}commit_script.sh
 
 echo "${G}What .rc file do you use? ($P.bashrc$G, $P.shrc$G, $P.zshrc$G)$N"
 read RC_FILE
-while [ -z $RC_FILE ] ; do
+while [ -z "$RC_FILE" ] ; do
 	echo "${R}Filename cannot be NULL. >:("
 	echo "${G}What .rc file do you use?$N"
 	read RC_FILE
 done
+RC_FILE=$HOME/$RC_FILE
 
-if [ -d $RC_FILE ] ; then
+
+if [ -d "$RC_FILE" ] ; then
 	echo "${R}Error: File cannot be a directory: $P$RC_FILE"
 	echo "${G}I bet you think you're really funny.$N"
 	exit 1
 fi
 
-if [ ! -f $RC_FILE ] ; then
+if [ ! -f "$RC_FILE" ] ; then
 	echo "${P}$RC_FILE$G does not exist. Creating..."
-	touch $RC_FILE
 fi
 
 
 echo "${G}Appending data to $P$RC_FILE$G.$N"
 
-echo "####  Git Push Plus variables and setup  ####\n" >> $RC_FILE
+echo "\n####  Git Push Plus variables and setup  ####\n" >> $RC_FILE
 echo "export GPP_DIR=$GPP_DIR" >> $RC_FILE
 echo "export GPP_GREEN='\\033[0;32m'" >> $RC_FILE
 echo "export GPP_PURPLE='\\033[0;35m'" >> $RC_FILE
 echo "export GPP_RED='\\033[0;31m'" >> $RC_FILE
 echo "export GPP_NOCOLOR='\\033[0m'\n" >> $RC_FILE
 echo "source $${GPP_DIR}$GPP_ALIAS\n" >> $RC_FILE
-echo "####          End Git Push Plus          ####" >> $RC_FILE
+echo "####          End Git Push Plus          ####\n" >> $RC_FILE
 echo ""
 
 
-echo "${G}Setting up shortcuts!"
+echo "${G}Setting up shortcuts!\n"
 GPP_ALIAS=${GPP_DIR}$GPP_ALIAS
 echo "" > $GPP_ALIAS
-echo ""
 
 
 echo "${G}What is your default text editor?$N"
@@ -76,12 +76,11 @@ while [ -z $GPP_EDITOR ] ; do
 	read GPP_EDITOR
 done
 if [ "$GPP_EDITOR" -eq "emacs" ] ; then
-	echo "${G}This was written in ${P}vim$G... just saying.$N"
+	echo "${G}This was written in ${P}vim$G... just saying.$N\n"
 else if [ "$GPP_EDITOR" -ne "vim" ] ; then
-	echo "${G}That is neither ${P}vim$G nor ${R}emacs$G."
+	echo "${G}That is neither ${P}vim$G nor ${R}emacs$G.$N\n"
 fi
 echo "GPP_EDITOR=$GPP_EDITOR\n" >> $GPP_ALIAS
-echo ""
 
 
 echo "${G}What would you like to alias to $R$GPP_EDITOR .gitignore$G?"
@@ -96,10 +95,10 @@ fi
 echo ""
 
 
-echo "What would you like to alias to the ${R}GPP Git Push$G function?"
-echo "(Default: ${P}gp$G)$N"
-read RESPONSE
 COMMAND_GP="gp"
+echo "What would you like to alias to the ${R}GPP Git Push$G function?"
+echo "(Default: $P$COMMAND_GP$G)$N"
+read RESPONSE
 if [ -n "$RESPONSE" ] ; then
 	echo "${G}Jeez what kind of command name is ${P}$RESPONSE$G?"
 	echo "Alright I guess...$N"
@@ -122,10 +121,10 @@ fi
 echo ""
 
 
-echo "${G}What would you like to alias to ${R}git status$G?"
-echo "(Default: ${P}gs$G)$N"
-read RESPONSE
 COMMAND_GS="gs"
+echo "${G}What would you like to alias to ${R}git status$G?"
+echo "(Default: $P$COMMAND_GS$G)$N"
+read RESPONSE
 if [ -n $RESPONSE ] ; then
 	echo "${G}Well if you insist...$N"
 	COMMAND_GS=$RESPONSE
@@ -134,8 +133,30 @@ fi
 echo "alias $COMMAND_GS=\"git status\"" >> $GPP_ALIAS
 
 
-echo "${G}What would you like to alias to ${R}git add .$G?"
-echo "(Default: ${P}ga$G)$N"
-read RESPONSE
 COMMAND_GA="ga"
+echo "${G}What would you like to alias to ${R}git add .$G?"
+echo "(Default: $P$COMMAND_GA$G)$N"
+read RESPONSE
+if [ -n $RESPONSE ] ; then
+	COMMAND_GA=$RESPONSE
+	echo ""
+fi
+echo "alias $COMMAND_GA=\"git add .\"" >> $GPP_ALIAS
 
+
+COMMAND_GALL="gall"
+echo "${G}What would you like to alias to the ${R}GPP Git All$G function?"
+echo "(Default: $P$COMMAND_GALL$G)$N"
+read RESPONSE
+if [ -n $RESPONSE ] ; then
+	COMMAND_GALL=$RESPONSE
+	echo ""
+fi
+echo "function $COMMAND_GALL () {" >> $GPP_ALIAS
+echo "$COMMAND_GS && $COMMAND_GA && $COMMAND_GS && $COMMAND_GC $$1 && $COMMAND_GP" >> $GPP_ALIAS
+echo "$COMMAND_GS" >> $GPP_ALIAS
+echo "}\n" >> $GPP_ALIAS
+
+
+echo "${G}All done! Feel free to delete this repository now.$N"
+exit
