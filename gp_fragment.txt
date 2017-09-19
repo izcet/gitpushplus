@@ -1,6 +1,3 @@
-alias gi="vim .gitignore"
-
-function gp () {
 	if [ $# != 0 ] ; then
 		while [ "$1" != "" ] ; do
 			echo -n "${GPP_GREEN}$1: ${GPP_PURPLE}"
@@ -17,23 +14,3 @@ function gp () {
 		rm -rf $GPP_TEMP_FILE
 	fi
 	echo -n "$GPP_NOCOLOR"
-}
-
-alias gq="git pull"
-alias gs="git status"
-alias ga="git add ."
-
-# References my mini git commit automation script
-function gc () {
-	git commit -m "$(sh ${GPP_DIR}git_commit_script.sh $1)"
-}
-
-# Shortcuts on shortcuts
-function gall () {
-	gs
-	ga
-	gs
-	gc $1
-	gp
-	gs
-}
