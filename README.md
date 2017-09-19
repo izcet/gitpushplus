@@ -1,10 +1,9 @@
 # Git Push Plus (GPP)
-A tool for improving git commit tracking and overall command line simplification.
 
-#### Why
 I don't always have the time or remember to write out a verbose commit message of all the changes I made to any number of files, especially when I make multiple small changes. So It's more useful to me to be able to quickly see which files were added, edited, and removed when, so I can backtrack to a specific commit more quickly. 
 <br><br>
 I originally just made this for me but I've had a couple requests by others who found it cool so I created this separate repo to allow others to install.
+
 
 #### Features:
  - Fully add/commit/push a file with only one command!
