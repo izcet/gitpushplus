@@ -1,4 +1,4 @@
-GPP_DIR="~/.gpp_resources/"
+GPP_DIR=~/.gpp_resources/
 GPP_GREEN='\033[0;32m'
 GPP_PURPLE='\033[0;35m'
 GPP_NOCOLOR='\033[0m'
@@ -7,22 +7,22 @@ alias gi="vim .gitignore"
 
 function gp () {
 	if [ $# != 0 ] ; then
-		while [ $1 != "" ] ; do
+		while [ "$1" != "" ] ; do
 			echo -n "${GPP_GREEN}$1: ${GPP_PURPLE}"
 			git push $1 master
 			shift
 		done
 	else
+		GPP_TEMP_FILE="$(whoami)_temp_file_$(date).txt"
+		git remote > $GPP_TEMP_FILE
 		while read line ; do
 			echo -n "${GPP_GREEN}$line: ${GPP_PURPLE}"
 			git push $line master
-		done <(git remote)
+		done < $GPP_TEMP_FILE
+		rm -rf $GPP_TEMP_FILE
 	fi
 	echo -n "$GPP_NOCOLOR"
 }
-
-# I wanted to make this portable but for now here's a short hack
-alias gp="echo -n \"${GRE}origin: ${PUR}\" ; git push origin master ; echo -n \"${GRE}gh: ${BLU}\" ; git push gh master ; echo -n \"${NOC}\""
 
 alias gq="git pull"
 alias gs="git status"
