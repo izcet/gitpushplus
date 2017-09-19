@@ -27,7 +27,7 @@ And generates/copies the files being sourced:
  - Takes optional user input to provide custom commit messages prior to the list of changed files.
  - [source](https://github.com/izcet/gitpushplus/blob/master/commit_script.sh)
 <br>
-![commit example](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/commit2.png)
+![commitexample](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/commit2.png)
 <br>
 ![Verbose commit example](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/commit.png)
 <br>
