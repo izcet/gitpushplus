@@ -21,6 +21,7 @@ read RESPONSE
 
 if [ -n "$RESPONSE" ] ; then
 	GPP_DIR=$RESPONSE
+	echo ""
 fi
 
 if [ -f $GPP_DIR ] ; then
