@@ -2,10 +2,12 @@
 A tool for improving git commit tracking and overall command line simplification.
 
 #### Why
-I don't always have the time or remember to write out a verbose commit message of all the changes I made to any number of files, especially when I make multiple small changes. So It's more useful to me to be able to quickly see which files were added, edited, and removed when, so I can backtrack to a specific commit more quickly.
+I don't always have the time or remember to write out a verbose commit message of all the changes I made to any number of files, especially when I make multiple small changes. So It's more useful to me to be able to quickly see which files were added, edited, and removed when, so I can backtrack to a specific commit more quickly. 
+<br><br>
+I originally just made this for me but I've had a couple requests by others who found it cool so I created this separate repo to allow others to install.
 
 #### Features:
- - Fully commit a file with only one command and verbose output!
+ - Fully add/commit/push a file with only one command!
  - Always [verbose](#verbose-commits) commit messages!
  - Multiple remote push automation!
  - Painless, one-time setup with customization!
@@ -13,7 +15,7 @@ I don't always have the time or remember to write out a verbose commit message o
 
 #### Setup:
 Just download and run `install.sh`, and the setup process is pretty painless. It asks you some questions about your environment and preferences, and then copies/generates the necessary files.
-<br>
+<br><br>
 ![install.sh](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/install.png)
 <br>
 It appends the necessary sourcing to the specified file (`.bashrc` in this example):
@@ -68,12 +70,14 @@ function gall () {
 }
 ```
 <br><br>
+<br><br>
 
 ### Verbose commits
  - Takes advantage of `grep` and `git status` to parse the changes into a string.
  - Takes optional user input to provide custom commit messages prior to the list of changed files.
  - [source](https://github.com/izcet/gitpushplus/blob/master/commit_script.sh)
 <br>
+
 ```
 $> gc
 [master 3d980cd] [README.md] +[pic/commit.png]
@@ -81,7 +85,8 @@ $> gc
  create mode 100644 pic/commit.png
 $>
 ```
-<br>
+
+<br><br>
 ```
 $> gc "Updated Readme and revised image preview"
 [master 6d2ddf3] Update Readme and revised image preview [pic/install.png] [install.sh] [README.md]
@@ -89,8 +94,13 @@ $> gc "Updated Readme and revised image preview"
  rewrite pic/install.png (95%)
 $>
 ```
+<br><br>
+<br><br>
 
 ### Git Push Plus All
-This command chains together all of the other shorthands to provide a quick way to fully commit and push to all remotes.
-<br>
+This command chains together all of the other shorthands to provide a quick way to fully commit and push to all remotes. You can combine the optional verbose commit message with this command and it's passed through.
+<br><br>
+
 ![Git Push Plus All](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/gall.png)
+
+<br><br>
