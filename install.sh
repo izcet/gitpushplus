@@ -67,7 +67,6 @@ echo "####          End Git Push Plus          ####\n" >> $RC_FILE
 echo ""
 
 
-echo "${G}Setting up shortcuts!\n"
 GPP_ALIAS=${GPP_DIR}$GPP_ALIAS
 echo "" > $GPP_ALIAS
 
@@ -95,8 +94,6 @@ read RESPONSE
 if [ -n "$RESPONSE" ] ; then
 	echo "alias $RESPONSE=\"\$GPP_EDITOR .gitignore\"\n" >> $GPP_ALIAS
 	echo ""
-else
-	echo "${B}Skipping...$N\n"
 fi
 
 
