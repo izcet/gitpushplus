@@ -19,7 +19,7 @@ It appends the necessary sourcing to the specified file:
 <br>
 And generates/copies the files being sourced:
 <br>
-![aliases](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/alias.png)
+![aliases](https://raw.githubusercontent.com/izcet/gitpushplus/cf0dbdeb692aef09fd363639e7dd685b9d90d578/pic/alias.png)
 <br>
 
 # Verbose commits
