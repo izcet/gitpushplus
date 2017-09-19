@@ -23,6 +23,9 @@ And generates/copies the files being sourced:
 #### Verbose commits
  - Takes advantage of `grep` and `git status` to parse the changes into a string.
  - Takes optional user input to provide custom commit messages prior to the list of changed files.
+<br>
+![Verbose commit example](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/commit.png)
+<br>
 
 #### Git Push Plus All
 This command chains together all of the other shorthands to:
