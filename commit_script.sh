@@ -42,4 +42,6 @@ if [ -n "$1" ] ; then
 	GIT_COMMIT_MESSAGE="$1 $GIT_COMMIT_MESSAGE"
 fi
 
+# "optional custom commit message [edited] [moved -> renamed] +[newfile] -[deleted]"
+
 echo "$GIT_COMMIT_MESSAGE"
