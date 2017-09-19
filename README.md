@@ -74,11 +74,21 @@ function gall () {
  - Takes optional user input to provide custom commit messages prior to the list of changed files.
  - [source](https://github.com/izcet/gitpushplus/blob/master/commit_script.sh)
 <br>
-
-![commitexample](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/commit2.png)
+```
+$> gc
+[master 3d980cd] [README.md] +[pic/commit.png]
+ 2 files changed, 3 insertions(+)
+ create mode 100644 pic/commit.png
+$>
+```
 <br>
-
-![Verbose commit example](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/commit.png)
+```
+$> gc "Updated Readme and revised image preview"
+[master 6d2ddf3] Update Readme and revised image preview [pic/install.png] [install.sh] [README.md]
+ 3 files changed, 20 insertions(+), 4 deletions(-)
+ rewrite pic/install.png (95%)
+$>
+```
 
 ### Git Push Plus All
 This command chains together all of the other shorthands to provide a quick way to fully commit and push to all remotes.
