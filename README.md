@@ -5,8 +5,8 @@ A tool for improving git commit tracking and overall command line simplification
 I don't always have the time or remember to write out a verbose commit message of all the changes I made to any number of files, especially when I make multiple small changes. So It's more useful to me to be able to quickly see which files were added, edited, and removed when, so I can backtrack to a specific commit more quickly.
 
 #### Features:
- - Fully commit a file with only [one command](#Git-Push-Plus-All) and verbose output!
- - Always [verbose](#Verbose-commits) commit messages!
+ - Fully commit a file with only one command and verbose output!
+ - Always [verbose](#verbose-commits) commit messages!
  - Multiple remote push automation!
  - Painless, one-time setup with customization!
  - Bash Wizardry!
