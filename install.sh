@@ -58,7 +58,7 @@ echo "export GPP_GREEN='\\033[0;32m'" >> $RC_FILE
 echo "export GPP_PURPLE='\\033[0;35m'" >> $RC_FILE
 echo "export GPP_RED='\\033[0;31m'" >> $RC_FILE
 echo "export GPP_NOCOLOR='\\033[0m'\n" >> $RC_FILE
-echo "source $${GPP_DIR}$GPP_ALIAS\n" >> $RC_FILE
+echo "source \${GPP_DIR}$GPP_ALIAS\n" >> $RC_FILE
 echo "####          End Git Push Plus          ####\n" >> $RC_FILE
 echo ""
 
@@ -75,9 +75,10 @@ while [ -z $GPP_EDITOR ] ; do
 	echo "${G}What is your preferred text editor?$N"
 	read GPP_EDITOR
 done
-if [ "$GPP_EDITOR" -eq "emacs" ] ; then
+
+if [ "$GPP_EDITOR" == "emacs" ] ; then
 	echo "${G}This was written in ${P}vim$G... just saying.$N\n"
-else if [ "$GPP_EDITOR" -ne "vim" ] ; then
+elif [ "$GPP_EDITOR" != "vim" ] ; then
 	echo "${G}That is neither ${P}vim$G nor ${R}emacs$G.$N\n"
 fi
 echo "GPP_EDITOR=$GPP_EDITOR\n" >> $GPP_ALIAS
@@ -88,11 +89,11 @@ echo "(I recommend ${P}gi$G)"
 echo "(Default: exclude this option)$N"
 read RESPONSE
 if [ -n "$RESPONSE" ] ; then
-	echo "alias $RESPONSE=\"$$GPP_EDITOR .gitignore\"\n"
+	echo "alias $RESPONSE=\"$$GPP_EDITOR .gitignore\"\n" >> $GPP_ALIAS
+	echo ""
 else
-	echo "${G}Skipping...$N"
+	echo "${G}Skipping...$N\n"
 fi
-echo ""
 
 
 COMMAND_GP="gp"
@@ -101,13 +102,12 @@ echo "(Default: $P$COMMAND_GP$G)$N"
 read RESPONSE
 if [ -n "$RESPONSE" ] ; then
 	echo "${G}Jeez what kind of command name is ${P}$RESPONSE$G?"
-	echo "Alright I guess...$N"
+	echo "Alright I guess...$N\n"
 	COMMAND_GP=$RESPONSE
 fi
 echo "function $COMMAND_GP () {" >> $GPP_ALIAS
 cat gp_fragment.txt >> $GPP_ALIAS
 echo "}\n" >> $GPP_ALIAS
-echo ""
 
 
 echo "What would you like to alias to ${R}git pull$G?"
@@ -115,20 +115,16 @@ echo "(Default: exclude this option)$N"
 read RESPONSE
 if [ -n "$RESPONSE" ] ; then
 	echo "alias $RESPONSE=\"git pull\"" >> $GPP_ALIAS
-else
-	echo "${G}Skipping...$N"
+	echo ""
 fi
-echo ""
-
 
 COMMAND_GS="gs"
 echo "${G}What would you like to alias to ${R}git status$G?"
 echo "(Default: $P$COMMAND_GS$G)$N"
 read RESPONSE
-if [ -n $RESPONSE ] ; then
-	echo "${G}Well if you insist...$N"
+if [ -n "$RESPONSE" ] ; then
+	echo "${G}Well if you insist...$N\n"
 	COMMAND_GS=$RESPONSE
-	echo ""
 fi
 echo "alias $COMMAND_GS=\"git status\"" >> $GPP_ALIAS
 
@@ -137,7 +133,7 @@ COMMAND_GA="ga"
 echo "${G}What would you like to alias to ${R}git add .$G?"
 echo "(Default: $P$COMMAND_GA$G)$N"
 read RESPONSE
-if [ -n $RESPONSE ] ; then
+if [ -n "$RESPONSE" ] ; then
 	COMMAND_GA=$RESPONSE
 	echo ""
 fi
@@ -148,7 +144,7 @@ COMMAND_GALL="gall"
 echo "${G}What would you like to alias to the ${R}GPP Git All$G function?"
 echo "(Default: $P$COMMAND_GALL$G)$N"
 read RESPONSE
-if [ -n $RESPONSE ] ; then
+if [ -n "$RESPONSE" ] ; then
 	COMMAND_GALL=$RESPONSE
 	echo ""
 fi
