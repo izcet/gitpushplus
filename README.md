@@ -29,12 +29,11 @@ And generates/copies the files being sourced:
  - Takes advantage of `grep` and `git status` to parse the changes into a string.
  - Takes optional user input to provide custom commit messages prior to the list of changed files.
  - [source](https://github.com/izcet/gitpushplus/blob/master/commit_script.sh)
+<br>
 ![commitexample](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/commit2.png)
 ![Verbose commit example](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/commit.png)
 
 ### Git Push Plus All
-This command chains together all of the other shorthands to:
- - Commit all changed files with the verbose commit option (Including a custom commit message if desired)
- - Push to all remotes on file
+This command chains together all of the other shorthands to provide a quick way to fully commit and push to all remotes.
 <br>
 ![Git Push Plus All](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/gall.png)
