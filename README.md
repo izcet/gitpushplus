@@ -18,18 +18,21 @@ It appends the necessary sourcing to the specified file:
 ![.dotfile example](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/bashrc.png)
 <br>
 And generates/copies the files being sourced:
-![aliases](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/bashrc.png)
+<br>
+![aliases](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/alias.png)
+<br>
 
-#### Verbose commits
+# Verbose commits
  - Takes advantage of `grep` and `git status` to parse the changes into a string.
  - Takes optional user input to provide custom commit messages prior to the list of changed files.
+ - [source](https://github.com/izcet/gitpushplus/blob/master/commit_script.sh)
 <br>
 ![commit example](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/commit2.png)
 <br>
 ![Verbose commit example](https://raw.githubusercontent.com/izcet/gitpushplus/master/pic/commit.png)
 <br>
 
-#### Git Push Plus All
+# Git Push Plus All
 This command chains together all of the other shorthands to:
  - Commit all changed files with the verbose commit option (Including a custom commit message if desired)
  - Push to all remotes on file
