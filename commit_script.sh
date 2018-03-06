@@ -39,7 +39,7 @@ done < $TEMPFILE
 rm $TEMPFILE
 
 if [ -n "$1" ] ; then
-	GIT_COMMIT_MESSAGE="$1 $GIT_COMMIT_MESSAGE"
+	GIT_COMMIT_MESSAGE="$@ $GIT_COMMIT_MESSAGE"
 fi
 
 # "optional custom commit message [edited] [moved -> renamed] +[newfile] -[deleted]"
