@@ -149,7 +149,7 @@ if [ -n "$RESPONSE" ] ; then
 	echo ""
 fi
 echo "\nfunction $COMMAND_GC () {" >> $GPP_ALIAS
-echo "\tgit commit -m \"\$(sh ${GPP_DIR}commit_script.sh \$1)\"" >> $GPP_ALIAS
+echo "\tgit commit -m \"\$(sh ${GPP_DIR}commit_script.sh \$@)\"" >> $GPP_ALIAS
 echo "}\n" >> $GPP_ALIAS
 
 
@@ -162,7 +162,7 @@ if [ -n "$RESPONSE" ] ; then
 	echo ""
 fi
 echo "function $COMMAND_GALL () {" >> $GPP_ALIAS
-echo "\t$COMMAND_GS && $COMMAND_GA && $COMMAND_GS && $COMMAND_GC \$1 && $COMMAND_GP" >> $GPP_ALIAS
+echo "\t$COMMAND_GS && $COMMAND_GA && $COMMAND_GS && $COMMAND_GC \$@ && $COMMAND_GP" >> $GPP_ALIAS
 echo "\t$COMMAND_GS" >> $GPP_ALIAS
 echo "}\n" >> $GPP_ALIAS
 
