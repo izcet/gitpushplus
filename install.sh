@@ -2,6 +2,7 @@
 
 GPP_DIR=~/.gpp_resources/
 GPP_ALIAS=aliases.sh
+
 GPP_GREEN='\033[0;32m'
 GPP_BLUE='\033[0;34m'
 GPP_PURPLE='\033[0;35m'

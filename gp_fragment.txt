@@ -1,15 +1,17 @@
-	if [ $# != 0 ] ; then
+    BRANCH="$(git branch | grep "^\*" | cut -c2-)"
+    if [ $# != 0 ] ; then
+        echo "${GPP_PURPLE}Pushing to branch \"${GPP_GREEN}$BRANCH${GPP_PURPLE}\""
 		while [ "$1" != "" ] ; do
 			echo -n "${GPP_GREEN}$1: ${GPP_PURPLE}"
-			git push $1 master
+			git push $1 $BRANCH
 			shift
 		done
 	else
-		GPP_TEMP_FILE="$(whoami)_temp_file_$(date).txt"
+		GPP_TEMP_FILE="/tmp/gpp_$(whoami)_temp.txt"
 		git remote > $GPP_TEMP_FILE
 		while read line ; do
 			echo -n "${GPP_GREEN}$line: ${GPP_PURPLE}"
-			git push $line master
+			git push $line $BRANCH
 		done < $GPP_TEMP_FILE
 		rm -rf $GPP_TEMP_FILE
 	fi
