@@ -150,7 +150,7 @@ if [ -n "$RESPONSE" ] ; then
 	echo ""
 fi
 echo "\nfunction $COMMAND_GC () {" >> $GPP_ALIAS
-echo "\tgit commit -m \"\$(sh ${GPP_DIR}commit_script.sh \$@)\"" >> $GPP_ALIAS
+echo "\tgit commit -m \"\$(${GPP_DIR}commit_script.sh \$@)\"" >> $GPP_ALIAS
 echo "}\n" >> $GPP_ALIAS
 
 
