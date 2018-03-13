@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 GIT_COMMIT_MESSAGE=""
 TEMP_FILE="/tmp/.gpp_commit.tmp" 
