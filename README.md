@@ -70,13 +70,11 @@ function gall () {
 	gstat
 }
 ```
-<br>
 
 ### Verbose commits
  - Takes advantage of `grep` and `git status` to parse the changes into a string.
  - Takes optional user input to provide custom commit messages prior to the list of changed files.
  - [source](https://github.com/izcet/gitpushplus/blob/master/commit_script.sh)  
-<br>
 
 ```
 $> gc
@@ -95,8 +93,10 @@ $>
 ```
 
 ```
+$> gc you can do without quotes also
 [master 3014973] you can do without quotes also [README.md]
  1 file changed, 1 deletion(-)
+$>
  ```
 <br>
 
