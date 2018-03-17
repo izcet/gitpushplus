@@ -94,7 +94,6 @@ $> gc "Updated Readme and revised image preview"
 $>
 ```
 <br><br>
-<br><br>
 
 ### Git Push Plus All
 This command chains together all of the other shorthands to provide a quick way to fully commit and push to all remotes. You can combine the optional verbose commit message with this command and it's passed through.
