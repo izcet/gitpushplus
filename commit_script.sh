@@ -1,39 +1,55 @@
 #!/bin/bash
 
 GIT_COMMIT_MESSAGE=""
-TEMP_FILE="/tmp/.gpp_commit.tmp" 
+TEMP_FILE="/tmp/.gpp_commit" 
 
 function on_exit {
-    rm -rf $TEMP_FILE
+    rm -rf $TEMP_FILE*
 }
 trap on_exit EXIT
 
-# Deleted files are included in the commit message as -[delted/file]
-git status | grep "deleted:" | sed 's/.*deleted:....//' > $TEMP_FILE
-while read line ; do
-    GIT_COMMIT_MESSAGE="-[$line] $GIT_COMMIT_MESSAGE"
-done < $TEMP_FILE
+git status  > $TEMP_FILE
 
+# prevent adding changed files to commit message if they aren't in the commit itself
+TARGET="Changes not staged for commit:"
+
+if [ -n "$(grep "^$TARGET$" $TEMP_FILE)" ] ; then
+    TEMP_TWO=${TEMP_FILE}_swp
+    while read line ; do
+        if [ "$line" == "$TARGET" ] ; then
+            break
+        fi
+        echo "$line" >> $TEMP_TWO
+    done < $TEMP_FILE
+    mv $TEMP_TWO $TEMP_FILE
+fi
+
+# add_files_by_type <match type> <character type>
+function add_files_by_type () {
+    MATCH="$1"
+    CHAR="$2"
+    SUB_TEMP="${TEMP_FILE}_$MATCH"
+    MESSAGE=""
+
+    grep "$MATCH:" $TEMP_FILE | sed "s/.*$MATCH:\s*//" > "$SUB_TEMP"
+    while read line ; do
+        MESSAGE="${CHAR}[${line}] $MESSAGE"
+    done < "$SUB_TEMP"
+
+    echo "$MESSAGE"
+}
+
+# Deleted files are included in the commit message as -[delted/file]
+GIT_COMMIT_MESSAGE="$(add_files_by_type "deleted" "-") $GIT_COMMIT_MESSAGE"
 
 # New files are included in the commit message as +[new/file]
-git status | grep "new file:" | sed 's/.*new file:...//' > $TEMP_FILE
-while read line ; do
-    GIT_COMMIT_MESSAGE="+[$line] $GIT_COMMIT_MESSAGE"
-done < $TEMP_FILE
-
+GIT_COMMIT_MESSAGE="$(add_files_by_type "new file" "+") $GIT_COMMIT_MESSAGE"
 
 # Renamed files are included in the commit message as [old/file -> new/file]
-git status | grep "renamed:" | sed 's/.*renamed:....//' > $TEMP_FILE
-while read line ; do
-    GIT_COMMIT_MESSAGE="[$line] $GIT_COMMIT_MESSAGE"
-done < $TEMP_FILE
-
+GIT_COMMIT_MESSAGE="$(add_files_by_type "renamed" "") $GIT_COMMIT_MESSAGE"
 
 # Modified files are included in the commit message as [file]
-git status | grep "modified:" | sed 's/.*modified:...//' > $TEMP_FILE
-while read line ; do
-    GIT_COMMIT_MESSAGE="[$line] $GIT_COMMIT_MESSAGE"
-done < $TEMP_FILE
+GIT_COMMIT_MESSAGE="$(add_files_by_type "modified" "") $GIT_COMMIT_MESSAGE"
 
 
 # The final output is in LIFO order, such that
