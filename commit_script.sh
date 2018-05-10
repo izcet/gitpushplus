@@ -39,6 +39,8 @@ function add_files_by_type () {
     echo "$MESSAGE"
 }
 
+# TODO I think there's a spacing issue somewhere in here, fix later
+
 # Deleted files are included in the commit message as -[delted/file]
 GIT_COMMIT_MESSAGE="$(add_files_by_type "deleted" "-") $GIT_COMMIT_MESSAGE"
 
