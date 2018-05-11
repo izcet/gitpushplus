@@ -41,20 +41,18 @@ function add_files_by_type () {
 
 # TODO I think there's a spacing issue somewhere in here, fix later
 
-# Deleted files are included in the commit message as -[delted/file]
-GIT_COMMIT_MESSAGE="$(add_files_by_type "deleted" "-") $GIT_COMMIT_MESSAGE"
-
-# New files are included in the commit message as +[new/file]
-GIT_COMMIT_MESSAGE="$(add_files_by_type "new file" "+") $GIT_COMMIT_MESSAGE"
+# Modified files are included in the commit message as [file]
+GIT_COMMIT_MESSAGE="$(add_files_by_type "modified" "")"
 
 # Renamed files are included in the commit message as [old/file -> new/file]
-GIT_COMMIT_MESSAGE="$(add_files_by_type "renamed" "") $GIT_COMMIT_MESSAGE"
+GIT_COMMIT_MESSAGE="$GIT_COMMIT_MESSAGE$(add_files_by_type "renamed" "")"
 
-# Modified files are included in the commit message as [file]
-GIT_COMMIT_MESSAGE="$(add_files_by_type "modified" "") $GIT_COMMIT_MESSAGE"
+# New files are included in the commit message as +[new/file]
+GIT_COMMIT_MESSAGE="$GIT_COMMIT_MESSAGE$(add_files_by_type "new file" "+")"
 
+# Deleted files are included in the commit message as -[delted/file]
+GIT_COMMIT_MESSAGE="$GIT_COMMIT_MESSAGE$(add_files_by_type "deleted" "-")"
 
-# The final output is in LIFO order, such that
 # [edited] [moved -> renamed] +[newfile] -[deleted]
 
 if [ -n "$1" ] ; then
