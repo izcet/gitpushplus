@@ -119,6 +119,14 @@ if [ -n "$RESPONSE" ] ; then
 	echo -e ""
 fi
 
+echo -e "${G}What would you like to alias to ${R}git diff$G?"
+echo -e "$B(Default: exclude this option)$N"
+read RESPONSE
+if [ -n "$RESPONSE" ] ; then
+	echo -e "alias $RESPONSE=\"git diff\"" >> $GPP_ALIAS
+	echo -e ""
+fi
+
 COMMAND_GS="gs"
 echo -e "${G}What would you like to alias to ${R}git status$G?"
 echo -e "$B(Default: $P$COMMAND_GS$B)$N"
