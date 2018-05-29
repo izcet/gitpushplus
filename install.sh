@@ -112,6 +112,7 @@ echo -e "}\n" >> $GPP_ALIAS
 
 
 echo -e "${G}What would you like to alias to ${R}git pull$G?"
+echo -e "$B(I recommend ${P}gu$B)"
 echo -e "$B(Default: exclude this option)$N"
 read RESPONSE
 if [ -n "$RESPONSE" ] ; then
@@ -120,6 +121,7 @@ if [ -n "$RESPONSE" ] ; then
 fi
 
 echo -e "${G}What would you like to alias to ${R}git diff$G?"
+echo -e "$B(I recommend ${P}gd$B)"
 echo -e "$B(Default: exclude this option)$N"
 read RESPONSE
 if [ -n "$RESPONSE" ] ; then
@@ -130,6 +132,7 @@ fi
 COMMAND_GS="gs"
 echo -e "${G}What would you like to alias to ${R}git status$G?"
 echo -e "$B(Default: $P$COMMAND_GS$B)$N"
+echo -e "${R}Be warned that this will collide with GhostScript, if present on your machine.$N"
 read RESPONSE
 if [ -n "$RESPONSE" ] ; then
 	echo -e "${B}Well if you insist...$N\n"
